@@ -3,18 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proyecto LAR - Gestión Inteligente</title>
+    <title>Proyecto LAR - Gestión Inteligente de Residuos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #0056b3; /* Azul Institucional */
-            --accent: #28a745;  /* Verde Ecológico */
-            --bg: #f4f4f9;
+            --primary: #0056b3; /* Azul UAP */
+            --accent: #28a745;  /* Verde Resultados */
+            --danger: #dc3545;  /* Rojo Problema */
+            --bg: #f0f2f5;
             --text: #333;
             --card-bg: #ffffff;
         }
 
         body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: var(--bg);
@@ -22,159 +24,236 @@
             line-height: 1.6;
         }
 
-        /* Header */
+        /* Header Mejorado */
         header {
-            background: linear-gradient(135deg, var(--primary), #003d80);
+            background: linear-gradient(135deg, #004a99, var(--primary));
             color: white;
             text-align: center;
-            padding: 2rem 1rem;
-            border-bottom-left-radius: 20px;
-            border-bottom-right-radius: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 3rem 1rem 2rem;
+            border-bottom-left-radius: 25px;
+            border-bottom-right-radius: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
-        h1 { margin: 0; font-size: 1.8rem; }
-        .subtitle { font-size: 0.9rem; opacity: 0.9; margin-top: 5px; }
-        .authors { font-size: 0.85rem; margin-top: 15px; font-weight: bold; background: rgba(255,255,255,0.2); display: inline-block; padding: 5px 15px; border-radius: 15px; }
+        h1 { margin: 0; font-size: 2.2rem; font-weight: 700; letter-spacing: -1px; }
+        .subtitle { font-size: 1.1rem; opacity: 0.95; margin-top: 5px; font-weight: 300; }
+        .authors-badge { margin-top: 20px; background: rgba(255,255,255,0.15); display: inline-block; padding: 8px 20px; border-radius: 50px; font-size: 0.9rem; backdrop-filter: blur(5px); }
+        .authors-badge i { margin-right: 8px; }
 
-        /* Contenedor Principal */
+        /* Contenedor */
         .container {
-            max-width: 800px;
-            margin: 0 auto;
+            max-width: 900px;
+            margin: -30px auto 0; /* Superpone un poco al header */
             padding: 20px;
+            position: relative;
+            z-index: 10;
         }
 
         /* Tarjetas */
         .card {
             background: var(--card-bg);
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            border-left: 5px solid var(--primary);
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            border-top: 4px solid var(--primary);
         }
 
         .card h2 {
             color: var(--primary);
             margin-top: 0;
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             display: flex;
             align-items: center;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
         }
         
-        .card h2::before {
-            content: '🔹';
-            margin-right: 10px;
-            font-size: 1rem;
-        }
+        .card h2 i { margin-right: 12px; color: var(--accent); }
+        .card.problem h2 i { color: var(--danger); }
+        .card.problem { border-top-color: var(--danger); }
 
-        /* Métricas destacadas */
+        /* Listas Técnicas */
+        .tech-list li {
+            margin-bottom: 12px;
+            padding-left: 5px;
+        }
+        .tech-list strong { color: var(--primary); }
+
+        /* --- ESTILOS PARA GRÁFICOS CSS --- */
+        .chart-comparison { margin-top: 20px; }
+        .chart-row { margin-bottom: 25px; }
+        .chart-label { display: flex; justify-content: space-between; margin-bottom: 8px; font-weight: 600; font-size: 0.9rem;}
+        .bar-container {
+            height: 28px;
+            background-color: #e9ecef;
+            border-radius: 14px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .bar {
+            height: 100%;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 15px;
+            color: white;
+            font-weight: bold;
+            font-size: 0.85rem;
+            transition: width 1s ease-in-out;
+        }
+        .bar.current { background: linear-gradient(to right, #dc3545, #e35d6a); width: 100%; }
+        .bar.lar-system { background: linear-gradient(to right, #28a745, #34ce57); }
+
+        /* Grid de Métricas Económicas */
         .metrics-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-top: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
         }
-
         .metric-box {
-            background: #e9f5e9;
-            padding: 15px;
-            border-radius: 10px;
+            background: #fff;
+            padding: 20px 15px;
+            border-radius: 12px;
             text-align: center;
-            border: 1px solid #c3e6cb;
+            border: 2px solid #e9f5e9;
+            box-shadow: 0 4px 10px rgba(40, 167, 69, 0.1);
         }
-
-        .metric-value {
-            display: block;
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--accent);
-        }
-
-        .metric-label {
-            font-size: 0.8rem;
-            color: #555;
-        }
+        .metric-value { display: block; font-size: 1.8rem; font-weight: 800; color: var(--accent); line-height: 1.2;}
+        .metric-label { font-size: 0.85rem; color: #666; margin-top: 5px; font-weight: 500;}
+        .metric-box.ai { border-color: #e3f2fd; box-shadow: 0 4px 10px rgba(0, 86, 179, 0.1); }
+        .metric-box.ai .metric-value { color: var(--primary); }
 
         /* Footer */
         footer {
             text-align: center;
-            padding: 20px;
-            font-size: 0.8rem;
+            padding: 30px;
+            font-size: 0.9rem;
             color: #777;
-            margin-bottom: 20px;
+            background: #e9ecef;
+            border-top-left-radius: 25px;
+            border-top-right-radius: 25px;
+            margin-top: 40px;
         }
-
-        .btn {
-            display: block;
-            width: 100%;
-            text-align: center;
-            background: var(--primary);
-            color: white;
-            padding: 15px;
-            text-decoration: none;
-            border-radius: 10px;
-            font-weight: bold;
-            margin-top: 20px;
-        }
+        footer strong { color: var(--primary); }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Proyecto LAR</h1>
-        <div class="subtitle">Gestión Dinámica de Residuos Urbanos</div>
-        <div class="authors">Hans Sandoval & Brayan Erickson</div>
+        <h1><i class="fas fa-recycle"></i> Proyecto LAR</h1>
+        <div class="subtitle">Sistema Inteligente para la Gestión Dinámica de Residuos</div>
+        <div class="authors-badge">
+            <i class="fas fa-user-graduate"></i> Hans Sandoval & Brayan Erickson
+        </div>
     </header>
 
     <div class="container">
         
-        <div class="card">
-            <h2>El Desafío Actual</h2>
-            <p>La recolección en el sector sur de Iquique opera "a ciegas", con rutas estáticas que generan visitas innecesarias y desbordes imprevistos. Pasamos de un modelo <strong>Reactivo</strong> a uno <strong>Proactivo</strong>.</p>
+        <div class="card problem">
+            <h2><i class="fas fa-exclamation-triangle"></i> El Problema en Iquique</h2>
+            <p>El sector sur opera bajo un modelo <strong>reactivo y estático</strong>. Los camiones realizan rutas fijas "a ciegas", lo que genera dos grandes ineficiencias:</p>
+            <ul>
+                <li>Desperdicio de recursos al visitar contenedores vacíos.</li>
+                <li>Focos de insalubridad por desbordes imprevistos antes de la ruta.</li>
+            </ul>
+            <p style="text-align: center; font-weight: bold; margin-top: 20px; color: var(--primary);">
+                LAR cambia el paradigma: De "Esperar el reclamo" a "Predecir la necesidad".
+            </p>
         </div>
 
-        <div class="card" style="border-left-color: var(--accent);">
-            <h2>Tecnología Híbrida</h2>
-            <ul style="padding-left: 20px;">
-                <li><strong>IA Predictiva (LSTM):</strong> Red neuronal que anticipa el llenado de contenedores.</li>
-                <li><strong>Agentes (JADE):</strong> Negociación autónoma entre camiones y basura.</li>
-                <li><strong>Gemelo Digital (OSRM):</strong> Ruteo con topografía real de Iquique.</li>
+        <div class="card">
+            <h2><i class="fas fa-microchip"></i> Arquitectura Híbrida (El "Cerebro")</h2>
+            <p>Nuestra solución no es solo una app, es un ecosistema complejo que une tres tecnologías:</p>
+            <ul class="tech-list">
+                <li><i class="fas fa-brain" style="color: var(--primary); margin-right:8px;"></i> <strong>IA Predictiva (LSTM):</strong> Una Red Neuronal Recurrente (Deep Learning) analiza el historial y "ve el futuro", anticipando cuándo se llenará un contenedor.</li>
+                <li><i class="fas fa-robot" style="color: var(--primary); margin-right:8px;"></i> <strong>Agentes Autónomos (JADE):</strong> Camiones y contenedores virtuales que "negocian" entre sí mediante subastas digitales para asignar la recolección óptima.</li>
+                <li><i class="fas fa-map-marked-alt" style="color: var(--primary); margin-right:8px;"></i> <strong>Gemelo Digital (OSRM):</strong> Motor de ruteo que usa la topografía real de Iquique (no líneas rectas) para validar tiempos y distancias.</li>
             </ul>
         </div>
 
-        <div class="card">
-            <h2>Impacto Validado</h2>
+         <div class="card">
+            <h2><i class="fas fa-random"></i> ¿Por qué debe ser Dinámico?</h2>
+            <p>El modelo estático falla porque la realidad de la calle es impredecible, especialmente con recolección manual:</p>
+            <ul>
+                <li><strong>Variabilidad Humana:</strong> La recolección "bolsa a bolsa" tiene tiempos inciertos en cada parada.</li>
+                <li><strong>Incidencias Viales:</strong> Tráfico, autos mal estacionados o accidentes bloquean rutas planificadas.</li>
+                <li><strong>Recursos Críticos:</strong> Averías mecánicas del camión o lesiones del personal obligan a reasignar rutas al instante.</li>
+            </ul>
+        </div>
+
+        <div class="card" style="border-top-color: var(--accent);">
+            <h2><i class="fas fa-chart-line"></i> Resultados Validados</h2>
+            <p>Las simulaciones comparativas (Sistema Actual vs. LAR) demuestran mejoras contundentes en eficiencia operativa.</p>
+            
+            <div class="chart-comparison">
+                
+                <div class="chart-row">
+                    <div class="chart-label">
+                        <span><i class="fas fa-road"></i> Distancia Total Recorrida</span>
+                        <span style="color: var(--accent); font-weight: 800;">-25% Mejora</span>
+                    </div>
+                    <div style="margin-bottom: 8px;">
+                        <span style="font-size: 0.8rem; color: #666;">Sistema Actual (Estático)</span>
+                        <div class="bar-container">
+                            <div class="bar current" style="width: 100%;">100% (Referencia)</div>
+                        </div>
+                    </div>
+                    <div>
+                        <span style="font-size: 0.8rem; color: #666;">Sistema LAR (Dinámico)</span>
+                        <div class="bar-container">
+                            <div class="bar lar-system" style="width: 75%;">75% Recorrido</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-row">
+                    <div class="chart-label">
+                        <span><i class="fas fa-hourglass-half"></i> Tiempo Total de Ciclo</span>
+                        <span style="color: var(--accent); font-weight: 800;">-20% Más Rápido</span>
+                    </div>
+                     <div style="margin-bottom: 8px;">
+                        <div class="bar-container">
+                            <div class="bar current" style="width: 100%;">Turno Completo + HH.EE</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="bar-container">
+                            <div class="bar lar-system" style="width: 80%;">Jornada Optimizada</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <h3 style="margin-top: 30px; color: #555; font-size: 1.1rem;"><i class="fas fa-coins"></i> Impacto Económico y Técnico</h3>
             <div class="metrics-grid">
                 <div class="metric-box">
-                    <span class="metric-value">25%</span>
-                    <span class="metric-label">Menos Km Recorridos</span>
-                </div>
-                <div class="metric-box">
-                    <span class="metric-value">20%</span>
-                    <span class="metric-label">Menor Tiempo Ciclo</span>
-                </div>
-                <div class="metric-box">
+                    <i class="fas fa-money-bill-wave" style="color: var(--accent); font-size: 1.2rem; margin-bottom: 10px;"></i>
                     <span class="metric-value">$1.8M</span>
-                    <span class="metric-label">Ahorro Mensual CLP</span>
+                    <span class="metric-label">Ahorro Mensual Est. (CLP por ruta)</span>
                 </div>
-                <div class="metric-box">
+                <div class="metric-box ai">
+                    <i class="fas fa-bullseye" style="color: var(--primary); font-size: 1.2rem; margin-bottom: 10px;"></i>
                     <span class="metric-value">>90%</span>
-                    <span class="metric-label">Precisión IA</span>
+                    <span class="metric-label">Sensibilidad IA (Detección de Picos)</span>
                 </div>
             </div>
-        </div>
 
-        <div class="card">
-            <h2>Conclusión</h2>
-            <p>El sistema demuestra que la integración de <strong>Deep Learning</strong> y <strong>Sistemas Multi-Agente</strong> es viable y rentable, optimizando recursos públicos y mejorando la calidad de vida en la ciudad.</p>
         </div>
-
-        <footer>
-            <p>Universidad Arturo Prat<br>Ingeniería Civil en Computación e Informática<br>2025</p>
-        </footer>
 
     </div>
+
+    <footer>
+        <p><strong>Universidad Arturo Prat</strong><br>
+        Ingeniería Civil en Computación e Informática<br>
+        Iquique, Chile - 2025</p>
+        <p style="font-size: 0.8rem; margin-top: 15px;">Proyecto de Título: Solución basada en SMA y Deep Learning.</p>
+    </footer>
 
 </body>
 </html>
