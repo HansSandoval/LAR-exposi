@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto LAR - Gestión Inteligente</title>
+    <style>
+        :root {
+            --primary: #0056b3; /* Azul Institucional */
+            --accent: #28a745;  /* Verde Ecológico */
+            --bg: #f4f4f9;
+            --text: #333;
+            --card-bg: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary), #003d80);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        h1 { margin: 0; font-size: 1.8rem; }
+        .subtitle { font-size: 0.9rem; opacity: 0.9; margin-top: 5px; }
+        .authors { font-size: 0.85rem; margin-top: 15px; font-weight: bold; background: rgba(255,255,255,0.2); display: inline-block; padding: 5px 15px; border-radius: 15px; }
+
+        /* Contenedor Principal */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Tarjetas */
+        .card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--primary);
+        }
+
+        .card h2 {
+            color: var(--primary);
+            margin-top: 0;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .card h2::before {
+            content: '🔹';
+            margin-right: 10px;
+            font-size: 1rem;
+        }
+
+        /* Métricas destacadas */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .metric-box {
+            background: #e9f5e9;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid #c3e6cb;
+        }
+
+        .metric-value {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent);
+        }
+
+        .metric-label {
+            font-size: 0.8rem;
+            color: #555;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.8rem;
+            color: #777;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            text-align: center;
+            background: var(--primary);
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Proyecto LAR</h1>
+        <div class="subtitle">Gestión Dinámica de Residuos Urbanos</div>
+        <div class="authors">Hans Sandoval & Brayan Erickson</div>
+    </header>
+
+    <div class="container">
+        
+        <div class="card">
+            <h2>El Desafío Actual</h2>
+            <p>La recolección en el sector sur de Iquique opera "a ciegas", con rutas estáticas que generan visitas innecesarias y desbordes imprevistos. Pasamos de un modelo <strong>Reactivo</strong> a uno <strong>Proactivo</strong>.</p>
+        </div>
+
+        <div class="card" style="border-left-color: var(--accent);">
+            <h2>Tecnología Híbrida</h2>
+            <ul style="padding-left: 20px;">
+                <li><strong>IA Predictiva (LSTM):</strong> Red neuronal que anticipa el llenado de contenedores.</li>
+                <li><strong>Agentes (JADE):</strong> Negociación autónoma entre camiones y basura.</li>
+                <li><strong>Gemelo Digital (OSRM):</strong> Ruteo con topografía real de Iquique.</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>Impacto Validado</h2>
+            <div class="metrics-grid">
+                <div class="metric-box">
+                    <span class="metric-value">25%</span>
+                    <span class="metric-label">Menos Km Recorridos</span>
+                </div>
+                <div class="metric-box">
+                    <span class="metric-value">20%</span>
+                    <span class="metric-label">Menor Tiempo Ciclo</span>
+                </div>
+                <div class="metric-box">
+                    <span class="metric-value">$1.8M</span>
+                    <span class="metric-label">Ahorro Mensual CLP</span>
+                </div>
+                <div class="metric-box">
+                    <span class="metric-value">>90%</span>
+                    <span class="metric-label">Precisión IA</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Conclusión</h2>
+            <p>El sistema demuestra que la integración de <strong>Deep Learning</strong> y <strong>Sistemas Multi-Agente</strong> es viable y rentable, optimizando recursos públicos y mejorando la calidad de vida en la ciudad.</p>
+        </div>
+
+        <footer>
+            <p>Universidad Arturo Prat<br>Ingeniería Civil en Computación e Informática<br>2025</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
