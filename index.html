@@ -3,68 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TuSitioReady | Soluciones Web en Iquique</title>
+    <title>Demo Zofri | TuSitioReady</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
-    <nav>
-        <div class="logo">TSR<span>.</span></div>
-        <ul>
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="logo.png" alt="TSR" class="nav-logo">
+            <span class="brand-name">TuSitio<span>Ready</span></span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#demo">Demo En Vivo</a></li>
             <li><a href="#servicios">Servicios</a></li>
-            <li><a href="#proyectos">Ejemplos</a></li>
-            <li><a href="#sobre-mi">Sobre Mí</a></li>
-            <li><a href="https://wa.me/TUNUMERO" class="btn-nav">Contacto</a></li>
+            <li><a href="https://wa.me/TUNUMERO" class="cta-nav">¿Quieres una así?</a></li>
         </ul>
     </nav>
 
-    <header class="hero">
-        <div class="hero-content">
-            <h1>Tu Negocio en Línea, <span>Listo Ahora.</span></h1>
-            <p>Diseño web profesional, rápido y optimizado para emprendedores de Iquique.</p>
-            <div class="hero-btns">
-                <a href="#proyectos" class="btn-primary">Ver Ejemplos</a>
-                <a href="https://wa.me/TUNUMERO" class="btn-secondary">Pedir Presupuesto</a>
+    <header class="hero-zofri">
+        <div class="hero-overlay">
+            <div class="badge">EJEMPLO DE TIENDA REAL</div>
+            <h1>Digitaliza tu local en la <span>Zofri</span></h1>
+            <p>Pasamos tu inventario físico a una plataforma de ventas 24/7. Rápido, profesional y listo para vender.</p>
+            <div class="hero-actions">
+                <a href="#demo" class="btn-main">Ver Catálogo Demo</a>
+                <a href="#dev" class="btn-sub">Hablemos del Proyecto</a>
             </div>
         </div>
     </header>
 
-    <section id="servicios" class="services">
-        <h2>Lo que hacemos por ti</h2>
-        <div class="service-grid">
-            <div class="service-card">
-                <i class="fas fa-rocket"></i>
-                <h3>Landing Pages</h3>
-                <p>Páginas de alto impacto para promocionar un producto o servicio específico.</p>
+    <section id="demo" class="preview-section">
+        <h2>Catálogo Autoadministrable</h2>
+        <p class="subtitle">Así es como tus clientes verían tus productos desde Iquique a todo Chile.</p>
+        
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="img-placeholder">Cámara Pro 4K</div>
+                <div class="product-info">
+                    <h3>Cámara Sony Alpha</h3>
+                    <p class="price">$890.000 (Precio Zofri)</p>
+                    <button class="btn-buy">Añadir al Carrito</button>
+                </div>
             </div>
-            <div class="service-card">
-                <i class="fas fa-shopping-cart"></i>
-                <h3>Tiendas Online</h3>
-                <p>Vende tus productos de la Zofri o tu catálogo local a todo Chile.</p>
             </div>
-            <div class="service-card">
-                <i class="fas fa-mobile-alt"></i>
-                <h3>Diseño Responsivo</h3>
-                <p>Tu web se verá perfecta en celulares, tablets y computadoras.</p>
-            </div>
+    </section>
+
+    <section id="dev" class="dev-info">
+        <div class="dev-card">
+            <i class="fas fa-code"></i>
+            <h3>Desarrollado por Expertos</h3>
+            <p>Soy desarrollador enfocado en crear herramientas que funcionen. No solo diseño, construyo el motor que tu negocio necesita para escalar en el mercado digital.</p>
         </div>
     </section>
 
-    <section id="sobre-mi" class="about">
-        <div class="about-container">
-            <h2>Tecnología con Visión Logística</h2>
-            <p>Soy estudiante de Informática y Logística en Iquique. Esta combinación me permite no solo crear páginas bonitas, sino soluciones digitales estructuradas que realmente ayudan a la operación de tu negocio.</p>
-        </div>
-    </section>
-
-    <a href="https://wa.me/TUNUMERO" class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <footer>
-        <p>&copy; 2026 TuSitioReady - Iquique, Chile.</p>
-    </footer>
+    <a href="https://wa.me/TUNUMERO" class="wsp-float"><i class="fab fa-whatsapp"></i></a>
 
 </body>
 </html>
