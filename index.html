@@ -3,62 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Demo Zofri | TuSitioReady</title>
+    <title>TuSitioReady | Desarrollo Web Iquique</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
     <nav class="navbar">
-        <div class="logo-container">
-            <img src="logo.png" alt="TSR" class="nav-logo">
-            <span class="brand-name">TuSitio<span>Ready</span></span>
+        <div class="nav-container">
+            <div class="brand">
+                <img src="logo_tsr.png" alt="TSR" class="logo-img">
+                <span class="logo-text">TuSitio<span>Ready</span></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#catalogo">Demo Zofri</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="https://wa.me/569XXXXXXXX" class="btn-nav">Cotizar Proyecto</a></li>
+            </ul>
         </div>
-        <ul class="nav-links">
-            <li><a href="#demo">Demo En Vivo</a></li>
-            <li><a href="#servicios">Servicios</a></li>
-            <li><a href="https://wa.me/TUNUMERO" class="cta-nav">¿Quieres una así?</a></li>
-        </ul>
     </nav>
 
-    <header class="hero-zofri">
-        <div class="hero-overlay">
-            <div class="badge">EJEMPLO DE TIENDA REAL</div>
-            <h1>Digitaliza tu local en la <span>Zofri</span></h1>
-            <p>Pasamos tu inventario físico a una plataforma de ventas 24/7. Rápido, profesional y listo para vender.</p>
-            <div class="hero-actions">
-                <a href="#demo" class="btn-main">Ver Catálogo Demo</a>
-                <a href="#dev" class="btn-sub">Hablemos del Proyecto</a>
+    <header class="hero">
+        <div class="hero-content">
+            <div class="badge">PROTOTIPO DE ALTO RENDIMIENTO</div>
+            <h1>Potencia tu local con <span>Tecnología Web</span></h1>
+            <p>No solo diseño interfaces; construyo el motor digital que tu negocio en la Zofri necesita para escalar.</p>
+            <div class="hero-btns">
+                <a href="#catalogo" class="btn-main">Ver Catálogo Demo</a>
+                <a href="https://wa.me/569XXXXXXXX" class="btn-alt">Contactar Desarrollador</a>
             </div>
         </div>
     </header>
 
-    <section id="demo" class="preview-section">
-        <h2>Catálogo Autoadministrable</h2>
-        <p class="subtitle">Así es como tus clientes verían tus productos desde Iquique a todo Chile.</p>
+    <section id="catalogo" class="demo-section">
+        <div class="section-header">
+            <h2>Ejemplo: Catálogo Zofri Digital</h2>
+            <p>Visualiza cómo tus clientes verían tus productos destacados.</p>
+        </div>
         
         <div class="product-grid">
             <div class="product-card">
-                <div class="img-placeholder">Cámara Pro 4K</div>
-                <div class="product-info">
-                    <h3>Cámara Sony Alpha</h3>
-                    <p class="price">$890.000 (Precio Zofri)</p>
-                    <button class="btn-buy">Añadir al Carrito</button>
+                <div class="product-img"><i class="fas fa-camera"></i></div>
+                <div class="product-body">
+                    <h3>Sony Alpha A7 IV</h3>
+                    <span class="price">$1.950.000</span>
+                    <p>Ideal para importadoras de electrónica.</p>
+                    <button class="btn-buy">Ver Detalles</button>
                 </div>
             </div>
+            <div class="product-card">
+                <div class="product-img"><i class="fas fa-laptop"></i></div>
+                <div class="product-body">
+                    <h3>MacBook Pro M3</h3>
+                    <span class="price">$2.100.000</span>
+                    <p>Optimizado para ventas por volumen.</p>
+                    <button class="btn-buy">Ver Detalles</button>
+                </div>
             </div>
-    </section>
-
-    <section id="dev" class="dev-info">
-        <div class="dev-card">
-            <i class="fas fa-code"></i>
-            <h3>Desarrollado por Expertos</h3>
-            <p>Soy desarrollador enfocado en crear herramientas que funcionen. No solo diseño, construyo el motor que tu negocio necesita para escalar en el mercado digital.</p>
         </div>
     </section>
 
-    <a href="https://wa.me/TUNUMERO" class="wsp-float"><i class="fab fa-whatsapp"></i></a>
+    <section class="dev-banner">
+        <div class="banner-content">
+            <h3>Soluciones de Código Real</h3>
+            <p>Desarrollador enfocado en rendimiento y conversión. Menos palabras, más resultados técnicos.</p>
+        </div>
+    </section>
+
+    <a href="https://wa.me/569XXXXXXXX" class="wsp-float"><i class="fab fa-whatsapp"></i></a>
 
 </body>
 </html>
